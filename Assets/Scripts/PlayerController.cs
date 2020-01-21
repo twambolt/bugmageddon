@@ -50,7 +50,7 @@ public class PlayerController : MonoBehaviour
         }
         if (transform.position.y < groundHeight) {
             isStomping = false;
-            Debug.Log("Going up");
+            //Debug.Log("Going up");
         }
     }
 
