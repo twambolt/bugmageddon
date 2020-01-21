@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 7399940281822270950}
   - component: {fileID: 3352112232846602421}
   - component: {fileID: 3331084840751343047}
+  - component: {fileID: -7107205897651661798}
+  - component: {fileID: -3335524092206619392}
   m_Layer: 0
   m_Name: Bug
   m_TagString: Untagged
@@ -92,3 +94,29 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-7107205897651661798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2345160716138751941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 760cd47a09ccf472eb7a0b47bd336275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bugSpeed: 0.5
+--- !u!114 &-3335524092206619392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2345160716138751941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 760cd47a09ccf472eb7a0b47bd336275, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bugSpeed: 4

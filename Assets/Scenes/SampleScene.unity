@@ -366,7 +366,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 5
   stompSpeed: 11
-  playerheight: 7.24
   rgdb: {fileID: 0}
   charController: {fileID: 0}
 --- !u!143 &512782536
