@@ -9,16 +9,25 @@ public class PlayerController : MonoBehaviour
     private float playerheight = 7.24f; // height where the player should be
     private float groundHeight = 0.5f; // height of the floor
 
+    public AudioSource playerAudio;
+
+    public AudioClip stompSound;
+    public AudioClip bugStompSound;
+    public AudioClip powUpSound;
+
+    public ParticleSystem bugStompParticle; //particle that occurs when a bug gets stomped on
+
     private bool isStomping = false;
 
-    public Rigidbody rgdb;
+    private Rigidbody rgdb;
 
-    public CharacterController charController;
+    private CharacterController charController;
 
     // Start is called before the first frame update
     void Start()
     {
         charController = GetComponent<CharacterController>();
+        playerAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -49,6 +58,7 @@ public class PlayerController : MonoBehaviour
             transform.Translate(Vector3.down * stompSpeed * Time.deltaTime);
         }
         if (transform.position.y < groundHeight) {
+            playerAudio.PlayOneShot(stompSound, 1f);
             isStomping = false;
             //Debug.Log("Going up");
         }
