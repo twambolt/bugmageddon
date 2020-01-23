@@ -9,16 +9,22 @@ public class PlayerController : MonoBehaviour
     private float playerheight = 7.24f; // height where the player should be
     private float groundHeight = 0.5f; // height of the floor
 
+    public AudioSource playerAudio;
+    public AudioClip stompSound;
+    public AudioClip bugStompSound;
+    public AudioClip powUpSound;
+
     private bool isStomping = false;
 
-    public Rigidbody rgdb;
-
-    public CharacterController charController;
+    private Rigidbody rgbd;
+    private CharacterController charController;
 
     // Start is called before the first frame update
     void Start()
     {
         charController = GetComponent<CharacterController>();
+        playerAudio = GetComponent<AudioSource>();
+        rgbd = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -37,6 +43,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && !isStomping)
         {
             isStomping = true;
+            playerAudio.PlayOneShot(stompSound, 1.0f);
         }
     }
 
@@ -45,7 +52,8 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void Stomp()
     {
-        if (transform.position.y >= groundHeight && isStomping) {
+        if (transform.position.y >= groundHeight && isStomping)
+        {
             transform.Translate(Vector3.down * stompSpeed * Time.deltaTime);
         }
         if (transform.position.y < groundHeight) {
@@ -88,6 +96,20 @@ public class PlayerController : MonoBehaviour
             pos.x = Mathf.Clamp(pos.x + horizontal, GameSettings.xMin, GameSettings.xMax);
             pos.z = Mathf.Clamp(pos.z + vertical, GameSettings.zMin, GameSettings.zMax);
             transform.position = pos;
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Bug"))
+        {
+            playerAudio.PlayOneShot(bugStompSound, 1.0f);
+            Destroy(collision.gameObject);
+        }
+        if (collision.gameObject.CompareTag("Powerup"))
+        {
+            playerAudio.PlayOneShot(powUpSound, 1.0f);
+            Destroy(collision.gameObject);
         }
     }
 }
